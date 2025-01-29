@@ -1,0 +1,77 @@
+/* Global styles */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+
+:root {
+  --primary-color: #009a00;
+  --heading-color: #d43f2f;
+  --text-color: #333333;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: #f6f5c1;
+  color: #333;
+  margin: 0;
+  padding: 20px;
+}
+
+header {
+  text-align: center;
+  color: #006837; /* Dark green inspired by Mozambique flag */
+}
+
+h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+}
+
+.container {
+  width: 90%;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+section {
+  margin-top: 40px;
+  text-align: center;
+}
+
+section h2 {
+  color: #d32f2f; /* Red inspired by Mozambique flag */
+  font-size: 2em;
+}
+
+section img {
+  width: 100%;
+  height: auto;
+  max-width: 600px;
+  display: block;
+  margin: 0 auto 20px;
+}
+
+section p {
+  font-size: 1.2em;
+  line-height: 1.6;
+  margin: 0 auto;
+  text-align: justify;
+  max-width: 800px;
+}
+
+/* Media queries for responsiveness */
+@media (min-width: 1200px) {
+  h1 {
+    font-size: 3em;
+  }
+}
+
+@media (max-width: 768px) {
+  section p {
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.8em;
+  }
+}
