@@ -1,0 +1,75 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap");
+
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: #e8f0fe; /* Pastel blue background */
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+form {
+  max-width: 700px; /* Wider container */
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #f4f8fb; /* Light pastel color for the form container */
+  border-radius: 16px; /* Larger rounded corners */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Softer shadow for modern look */
+  color: #333;
+  text-align: left; /* Left-aligns the form elements */
+}
+
+h2 {
+  text-align: center; /* Center-aligns the title */
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin: 12px 0 5px;
+  color: #444;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 12px;
+  margin: 6px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px; /* Rounded corners for input fields */
+  box-sizing: border-box;
+  font-size: 1rem;
+}
+
+input[type="submit"] {
+  background-color: #779ecb;
+  color: #fff;
+  border: none;
+  padding: 12px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 12px; /* Rounded button */
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover {
+  background-color: #406289; /* Darker shade on hover */
+}
+
+p {
+  font-size: 0.9rem;
+  margin-top: 20px;
+}
+
+a {
+  color: #779ecb;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
