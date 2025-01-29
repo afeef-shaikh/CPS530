@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lab 04: Bookmark List and Palindrome Checker</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #f4f4f9;
+        color: #333;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        padding: 20px;
+      }
+      h1 {
+        font-weight: 600;
+        color: #3f72af;
+        margin-bottom: 20px;
+      }
+      .container {
+        width: 90%;
+        max-width: 800px;
+        background-color: #fff;
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        margin-bottom: 30px;
+      }
+      .container h2 {
+        font-size: 1.5rem;
+        color: #3f72af;
+        margin-bottom: 15px;
+      }
+      input[type="text"],
+      textarea {
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        font-size: 1rem;
+        margin-bottom: 10px;
+      }
+      button {
+        background-color: #3f72af;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: background-color 0.3s;
+      }
+      button:hover {
+        background-color: #345d8b;
+      }
+      .bookmark-list ul {
+        list-style-type: none;
+        padding: 0;
+      }
+      .bookmark-list li {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+      }
+      .padlock {
+        font-size: 1.2rem;
+        margin-right: 10px;
+      }
+      .secure {
+        color: green;
+      }
+      .insecure {
+        color: red;
+      }
+      .section {
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Lab 04: Bookmark List and Palindrome Checker</h1>
+
+    <div class="container">
+      <h2>Bookmark List</h2>
+      <div class="section">
+        <input
+          type="text"
+          id="bookmarkInput"
+          placeholder="Enter URL (http or https)"
+        />
+        <button onclick="addBookmark()">Add Bookmark</button>
+      </div>
+      <div class="bookmark-list">
+        <ul id="bookmarkList"></ul>
+      </div>
+    </div>
+
+    <div class="container">
+      <h2>Palindrome Checker</h2>
+      <div class="section">
+        <textarea
+          id="palindromeInput"
+          rows="3"
+          placeholder="Enter a sentence to check if it's a palindrome..."
+        ></textarea>
+        <button onclick="checkPalindrome()">Check</button>
+        <p id="result"></p>
+      </div>
+    </div>
+
+    <script>
+      // Problem 1: Bookmark List
+      function addBookmark() {
+        const url = document.getElementById("bookmarkInput").value;
+        const bookmarkList = document.getElementById("bookmarkList");
+
+        if (!url) return alert("Please enter a URL.");
+
+        const listItem = document.createElement("li");
+        const icon = document.createElement("span");
+        icon.classList.add("padlock");
+
+        const isSecure = url.startsWith("https");
+        icon.innerHTML = isSecure ? "🔒" : "🔓";
+        icon.style.color = isSecure ? "green" : "red";
+
+        listItem.appendChild(icon);
+        listItem.innerHTML += ` ${url}`;
+        listItem.classList.add(isSecure ? "secure" : "insecure");
+        bookmarkList.appendChild(listItem);
+
+        // Clear input after adding
+        document.getElementById("bookmarkInput").value = "";
+      }
+
+      // Problem 2: Palindrome Checker
+      function cleanString(str) {
+        return str.toLowerCase().replace(/[^a-z0-9]/g, "");
+      }
+
+      function isPalindrome(str) {
+        const cleanedStr = cleanString(str);
+        const reversedStr = cleanedStr.split("").reverse().join("");
+        return cleanedStr === reversedStr;
+      }
+
+      function checkPalindrome() {
+        const input = document.getElementById("palindromeInput").value;
+        const result = document.getElementById("result");
+
+        if (isPalindrome(input)) {
+          result.innerHTML = `<span style="color: green;">"${input}" is a palindrome!</span>`;
+        } else {
+          result.innerHTML = `<span style="color: red;">"${input}" is not a palindrome.</span>`;
+        }
+      }
+    </script>
+  </body>
+</html>
