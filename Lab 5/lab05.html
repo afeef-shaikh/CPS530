@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lab 05 - Going Beyond JavaScript with jQuery</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+      /* General styles */
+      body {
+        font-family: "Roboto", sans-serif;
+        background-color: #e8f0fe;
+        color: #333;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        margin: 0;
+      }
+      h1 {
+        font-size: 2.5em;
+        color: #1a73e8;
+        margin-bottom: 20px;
+      }
+      .task-container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        width: 100%;
+        max-width: 700px;
+      }
+      .task-box {
+        background: #ffffff;
+        border-radius: 15px;
+        padding: 20px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        transition: box-shadow 0.3s;
+      }
+      .task-box:hover {
+        box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+      }
+      label {
+        font-weight: 700;
+        margin-top: 10px;
+        display: block;
+      }
+      input,
+      textarea {
+        width: 100%;
+        padding: 8px;
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 1em;
+      }
+      .output-display {
+        font-size: 1.5em;
+        font-weight: 700;
+        color: #1a73e8;
+        margin-top: 15px;
+      }
+      .char-counter {
+        font-size: 1.2em;
+        margin-top: 10px;
+        color: #333;
+      }
+      .full-screen-icon {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        font-size: 2em;
+        color: #ffffff;
+        cursor: pointer;
+        z-index: 2000; /* Ensure the icon is above other elements */
+        background-color: rgba(0, 0, 0, 0.7);
+        border-radius: 50%;
+        padding: 5px; /* Added padding for better click area */
+      }
+      /* Button styles */
+      button {
+        background-color: #1a73e8;
+        color: #ffffff;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        font-size: 1em;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: background-color 0.3s;
+      }
+      button:hover {
+        background-color: #1565c0;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Lab 05</h1>
+
+    <div class="task-container">
+      <!-- Task 1: Form Validation and Display -->
+      <div class="task-box" id="task1">
+        <h2>Task 1: Form Validation</h2>
+        <label for="name">Name:</label>
+        <input type="text" id="name" placeholder="Enter your name" />
+
+        <label for="address">Address:</label>
+        <input type="text" id="address" placeholder="Enter your address" />
+
+        <label for="phone">Phone Number:</label>
+        <input type="text" id="phone" placeholder="(416) 555-5555" />
+
+        <button onclick="validateAndDisplay()">Submit</button>
+
+        <div class="output-display" id="output-display"></div>
+      </div>
+
+      <!-- Task 2: Real-Time Character Counter -->
+      <div class="task-box" id="task2">
+        <h2>Task 2: Character Counter</h2>
+        <label for="textarea">Enter Text:</label>
+        <textarea id="textarea" rows="4"></textarea>
+        <div class="char-counter">
+          Total Characters: <span id="totalCount">0</span>
+        </div>
+        <div class="char-counter">
+          Letter Characters (A-Z): <span id="letterCount">0</span>
+        </div>
+      </div>
+
+      <!-- Task 3: Full Screen Image -->
+      <div class="task-box" id="task3">
+        <h2>Task 3: Full Screen Image</h2>
+        <img
+          id="clickableImage"
+          src="Toronto.jpg"
+          alt="Clickable Image"
+          style="width: 300px; cursor: pointer"
+        />
+      </div>
+    </div>
+
+    <script>
+      // Task 1: Form Validation and Display
+      function validateAndDisplay() {
+        const name = $("#name").val();
+        const address = $("#address").val();
+        const phone = $("#phone").val();
+        const namePattern = /^[A-Za-z\s]+$/;
+        const phonePattern = /^\(\d{3}\) \d{3}-\d{4}$/;
+
+        if (!namePattern.test(name)) {
+          alert("Invalid name. Use letters only.");
+          return;
+        }
+        if (!phonePattern.test(phone)) {
+          alert("Phone number format must be (416) 555-5555.");
+          return;
+        }
+
+        const formattedPhone = phone.replace(
+          /^\((\d{3})\) (\d{3})-(\d{4})$/,
+          "$1-$2-$3"
+        );
+        $("#output-display").html(`
+        <p>Name: ${name}</p>
+        <p>Address: ${address}</p>
+        <p>Phone: ${formattedPhone}</p>
+      `);
+      }
+
+      // Automatic phone format conversion
+      $("#phone").on("input", function () {
+        let input = $(this).val().replace(/\D/g, ""); // Remove all non-digit characters
+        if (input.length >= 3)
+          input = `(${input.slice(0, 3)}) ${input.slice(3)}`;
+        if (input.length >= 9) input = `${input.slice(0, 9)}-${input.slice(9)}`;
+        $(this).val(input);
+      });
+
+      // Task 2: Real-Time Character Counter
+      $("#textarea").on("input", function () {
+        const text = $(this).val();
+        $("#totalCount").text(text.length);
+        const lettersOnly = text.replace(/[^a-zA-Z]/g, "");
+        $("#letterCount").text(lettersOnly.length);
+      });
+
+      // Task 3: Full Screen Image with Animation and Close Option
+      $("#clickableImage").on("click", function () {
+        const image = $(this);
+        const originalWidth = image.width(); // Get the original width
+        const originalHeight = image.height(); // Get the original height
+
+        // Check if the image is already in full-screen mode
+        if (!image.hasClass("full-screen")) {
+          image.addClass("full-screen");
+          image.css({
+            position: "fixed",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            zIndex: 1000,
+          });
+
+          image.animate(
+            {
+              width: "100vw",
+              height: "100vh",
+            },
+            500,
+            function () {
+              // Append the close icon after the animation completes
+              $("body").append(
+                '<span class="material-icons full-screen-icon" id="closeIcon">close</span>'
+              );
+            }
+          );
+
+          // Close icon functionality
+          $(document).on("click", "#closeIcon", function () {
+            image.animate(
+              {
+                width: originalWidth, // Use original width
+                height: originalHeight, // Use original height
+              },
+              500,
+              function () {
+                image.removeClass("full-screen").css({
+                  position: "static",
+                  transform: "none",
+                });
+                $("#closeIcon").remove(); // Remove the close icon after animation
+              }
+            );
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
