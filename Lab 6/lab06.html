@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lab 06 - SVG</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* General styling */
+      body {
+        font-family: "Poppins", sans-serif;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #f0f4f8; /* Modern, light background */
+        color: #333;
+        margin: 0;
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        color: #555;
+        margin-bottom: 30px;
+      }
+
+      .container {
+        display: flex;
+
+        flex-direction: column;
+        gap: 30px;
+        width: 90%;
+        max-width: 1000px;
+      }
+
+      .box {
+        background-color: #ffffff;
+        border-radius: 15px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      svg {
+        display: flex;
+        margin: 0 auto;
+        max-width: 100%;
+      }
+
+      .label {
+        font-size: 0.9rem;
+        text-anchor: middle;
+        fill: #333;
+      }
+      circle {
+        opacity: 0.6; /* Adjust opacity as needed */
+      }
+      .shape {
+        margin-right: 50px; /* Adjust spacing as needed */
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Lab 06 - SVG</h1>
+    <div class="container">
+      <!-- Problem 1: Shapes with Labels -->
+      <div class="box">
+        <h2>Problem 1: Shapes with Labels</h2>
+
+        <svg width="600" height="150">
+          <g class="shape">
+            <polygon
+              points="40,80 70,30 100,80"
+              style="fill: #f9d776; stroke: black; stroke-width: 2"
+            />
+            <text x="70" y="95" class="label">Triangle</text>
+          </g>
+
+          <g class="shape">
+            <polygon
+              points="130,30 160,30 180,80 110,80"
+              style="fill: #add8e6; stroke: black; stroke-width: 2"
+            />
+            <text x="145" y="95" class="label">Quadrilateral</text>
+          </g>
+
+          <g class="shape">
+            <polygon
+              points="210,50 230,30 250,50 240,80 220,80"
+              style="fill: #fad1c1; stroke: black; stroke-width: 2"
+            />
+            <text x="230" y="95" class="label">Pentagon</text>
+          </g>
+
+          <g class="shape">
+            <polygon
+              points="290,40 310,40 320,60 310,80 290,80 280,60"
+              style="fill: #a2d6a3; stroke: black; stroke-width: 2"
+            />
+            <text x="300" y="95" class="label">Hexagon</text>
+          </g>
+        </svg>
+      </div>
+
+      <!-- Problem 2: Venn Diagram Circles -->
+
+      <div class="box">
+        <h2>Problem 2: Overlapping Circles</h2>
+
+        <svg width="400" height="300">
+          <circle cx="150" cy="150" r="80" fill="yellow" />
+          <text
+            x="150"
+            y="150"
+            font-size="24"
+            text-anchor="middle"
+            fill="black"
+          >
+            Y
+          </text>
+
+          <circle cx="100" cy="200" r="80" fill="magenta" />
+          <text
+            x="100"
+            y="220"
+            font-size="24"
+            text-anchor="middle"
+            fill="white"
+          >
+            M
+          </text>
+
+          <circle cx="200" cy="200" r="80" fill="cyan" />
+          <text
+            x="200"
+            y="220"
+            font-size="24"
+            text-anchor="middle"
+            fill="black"
+          >
+            C
+          </text>
+        </svg>
+      </div>
+
+      <!-- Problem 3: Gradient Rectangle with Sections -->
+      <div class="box">
+        <h2>Problem 3: Gray Rectangles</h2>
+        <svg width="200" height="200">
+          <rect x="10" y="10" width="180" height="40" fill="#000000" />
+          <rect x="10" y="50" width="180" height="40" fill="#333333" />
+          <rect x="10" y="90" width="180" height="40" fill="#666666" />
+          <rect x="10" y="130" width="180" height="40" fill="#999999" />
+        </svg>
+      </div>
+    </div>
+  </body>
+</html>
