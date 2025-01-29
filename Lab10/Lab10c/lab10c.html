@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab10 - Vue.js Framework</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="lab10c.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@3.2.47/dist/vue.global.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Lab10: Using Vue.js Framework</h1>
+    </header>
+    <main>
+        <section id="app" class="vue-section">
+            <h2>Vue.js Dynamic Feature</h2>
+            <p>{{ message }}</p>
+            <button @click="changeMessage">Click Me!</button>
+        </section>
+
+        <section class="documentation">
+            <h2>How I Installed Vue.js</h2>
+            <p>
+                I used Vue.js by including its CDN link directly in the HTML file. This method
+                is simple, especially when deploying on GitHub Pages. I added the following line
+                to my `<head>` section:
+            </p>
+            <pre>&lt;script src="https://cdn.jsdelivr.net/npm/vue@3.2.47/dist/vue.global.min.js"&gt;&lt;/script&gt;</pre>
+            <p>
+                This allowed me to use Vue.js features directly without setting up a build tool like Webpack or Vite.
+            </p>
+
+            <h2>How I Built This Page</h2>
+            <p>
+                I structured this page with three main sections:
+            </p>
+            <ul>
+                <li><strong>Header:</strong> Displays the page title and provides an introduction.</li>
+                <li><strong>Vue.js Features:</strong> A section powered by Vue.js to dynamically display a message and interact with users.</li>
+                <li><strong>Documentation:</strong> Details the installation process and challenges faced.</li>
+            </ul>
+
+            <h2>Challenges Faced</h2>
+            <div class="difficulty">
+                <p>
+                    One of the main challenges was ensuring compatibility with GitHub Pages, as Vue.js often requires
+                    a build tool for complex projects. By using the CDN version of Vue.js, I was able to avoid these issues.
+                </p>
+                <p>
+                    Another challenge was ensuring that the page was fully responsive. I solved this by testing the
+                    layout on different screen sizes and adjusting the CSS to use percentages and `max-width`.
+                </p>
+            </div>
+        </section>
+    </main>
+</body>
+<script src="lab10c.js"></script>
+</html>

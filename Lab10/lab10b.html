@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lab10 - City Information Form</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style> 
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #f4f4f9;
+        text-align: center;
+      }
+
+      h1 {
+        color: #4a90e2; /* Changed header color to match the theme */
+        padding: 30px 0;
+        font-size: 2.5em;
+      }
+
+      form {
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 30px;
+        background-color: #fff;
+        border-radius: 12px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      label {
+        display: block;
+        margin: 15px 0 5px;
+      }
+
+      input[type="text"],
+      input[type="url"] {
+        width: 100%;
+        padding: 10px;
+        border-radius: 8px;
+        border: 1px solid #ddd;
+        box-sizing: border-box;
+      }
+
+      .submit-btn {
+        display: block;
+        width: 100%;
+        padding: 15px 20px;
+        background-color: #58a6ff;
+        color: white;
+        border-radius: 8px;
+        font-size: 1.2em;
+        margin: 10px 0;
+        transition: background-color 0.3s;
+        cursor: pointer;
+      }
+
+      .submit-btn:hover {
+        background-color: #3b8eeb;
+      }
+
+      .button-container {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>City Information Form</h1>
+    <form method="post">
+      <label for="city">City Name:</label>
+      <input type="text" id="city" name="city" required /><br />
+
+      <label for="province">Province/State:</label>
+      <input type="text" id="province" name="province" /><br />
+
+      <label for="country">Country:</label>
+      <input type="text" id="country" name="country" required /><br />
+
+      <label for="picture">City Picture URL:</label>
+      <input type="url" id="picture" name="picture" required /><br />
+
+      <div class="button-container">
+        <input
+          type="submit"
+          formaction="../cgi-bin/lab10r.cgi"
+          value="Submit to Ruby Script"
+          class="submit-btn"
+        />
+        <input
+          type="submit"
+          formaction="../cgi-bin/lab10p.cgi"
+          value="Submit to Python Script"
+          class="submit-btn"
+        />
+      </div>
+    </form>
+
+    <p><a href="https://www.cs.torontomu.ca/~akshaikh/Lab10/lab10.html">Go Back</a></p>
+  </body>
+</html>
