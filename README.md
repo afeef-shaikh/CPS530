@@ -51,16 +51,9 @@ CPS530-Labs/
 │── README.md  <-- This file
 ```
 
-## 🚀 **How to Use**
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/afeef-shaikh/CPS530.git
-   ```
-2. Navigate into a lab folder and open the files in a browser or a local server.
-
 ## 📝 **Notes**
 - **Lab 09 requires a VPN** to access (I use a Student VPN by TMU called OpenVPN).
-- **Lab 10 Problem 3 is hosted separately on GitHub Pages** ([QuizZard Repo](https://afeef-shaikh.github.io/CPS530%20-%20Lab%2010/lab10c.html)).
+- **Lab 10 Problem 3 is hosted separately on GitHub Pages** ([Lab10 - Problem 3](https://afeef-shaikh.github.io/CPS530%20-%20Lab%2010/lab10c.html)).
 
 ---
 
